@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-gtu4)h18iol)(eayh-09e$2r%61d)m1lh%t(&x$mc&s-*ef2ub
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -47,13 +47,16 @@ INSTALLED_APPS = [
     'Login',
     'Register',
     'Post',
+    'UserProfile',
+    'Interactions'
 ]
 
 REST_FRAMEWORK = {
  'DEFAULT_PERMISSION_CLASSES':('rest_framework.permissions.IsAuthenticated',),
     'DEFAULT_AUTHENTICATION_CLASSES':('rest_framework.authentication.TokenAuthentication',),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 100
+    'PAGE_SIZE': 100,
+
 }
 
 MIDDLEWARE = [

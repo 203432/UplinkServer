@@ -11,6 +11,8 @@ from rest_framework.permissions import AllowAny
 urlpatterns = [
     path('api/v1/login/', include('Login.urls')),
     path('api/v1/post/', include('Post.urls')),
+    path('api/v1/profile/', include('UserProfile.urls')),
+    path('api/v1/comments/', include('Interactions.urls')),
     path('api/v1/register/', generics.CreateAPIView.as_view(
         serializer_class=UserSerializer,
         permission_classes=[AllowAny], # Aquí utilizamos AllowAny para permitir el registro sin autenticación

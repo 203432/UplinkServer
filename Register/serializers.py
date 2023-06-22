@@ -1,6 +1,8 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 
+from UserProfile.models import TablaProfile
+
 class UserSerializer(serializers.Serializer):
     id = serializers.ReadOnlyField()
     first_name = serializers.CharField()
@@ -18,6 +20,12 @@ class UserSerializer(serializers.Serializer):
         instance.first_name = validate_data.get('first_name')
         instance.set_password(validate_data.get('password'))
         instance.save()
+        
+        profile = TablaProfile.objects.create(
+            id_user=instance,
+            url_image=None,
+            description='',
+        )
         return instance
     
     def validate_username(self,data):
