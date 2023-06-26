@@ -6,4 +6,5 @@ from django.contrib.auth.models import User
 class TablaProfile(models.Model):
     id_user = models.OneToOneField(User, on_delete=models.CASCADE)
     url_image = models.ImageField(null=True,blank=True, default='', upload_to='imgProfile/')
-    description = models.CharField(max_length=200,)
+    description = models.CharField(max_length=200)
+    friends = models.ManyToManyField(User, related_name="friends")
